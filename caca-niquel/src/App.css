@@ -1,24 +1,5 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
-}
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
-}
-
-@keyframes logo-spin {
+@keyframes roletar {
   from {
     transform: rotate(0deg);
   }
@@ -26,17 +7,156 @@
     transform: rotate(360deg);
   }
 }
+.reacticone{
+  font-size: 60px;
+  animation: roletar 3s linear infinite;
+}
+.icones1{
+  font-size: 60px;
+}
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
+
+/* 
+.game {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 300px;
+  height: 250px;
+  background-color: rgb(34, 34, 34);
+  font-size: 60px;
+  margin-top: -110px;
+  border-radius:50px;
+  border: none;
+  position: relative;
+  margin: 300px auto 0;
+  background: linear-gradient(0deg, #000, #272727);
+} */
+
+
+
+
+
+.game {
+  position: relative;
+  margin: 300px auto 0;
+  border-radius: 50px;
+  background: linear-gradient(0deg, #000, #272727);
+}
+
+
+.game:before, .game:after {
+  content: '';
+  position: absolute;
+  left: -2px;
+  top: -2px;
+  background: linear-gradient(45deg, #fb0094, #0000ff, #00ff00,#ffff00, #ff0000, #fb0094, 
+    #0000ff, #00ff00,#ffff00, #ff0000);
+  background-size: 400%;
+  width: calc(100% + 4px);
+  height: calc(100% + 4px);
+  z-index: -1;
+  animation: steam 20s linear infinite;
+  border-radius: 50px;
+
+}
+
+@keyframes steam {
+  0% {
+    background-position: 0 0;
+  }
+  50% {
+    background-position: 400% 0;
+  }
+  100% {
+    background-position: 0 0;
   }
 }
 
-.card {
-  padding: 2em;
+.game:after {
+  filter: blur(50px);
 }
 
-.read-the-docs {
-  color: #888;
+
+
+
+
+
+
+
+
+
+
+.girar {
+  width: 100px;
+  height: 50px;
+  border: 1px solid white;
+  outline: none;
+  color: #fff;
+  background: #111;
+  cursor: pointer;
+  position: relative;
+  z-index: 0;
+  border-radius: 10px;
+  margin-top: 50px;
 }
+
+.girar:before {
+  content: '';
+  background: linear-gradient(45deg, #ff0000, #ff7300, #fffb00, #48ff00, #00ffd5, #002bff, #7a00ff, #ff00c8, #ff0000);
+  position: absolute;
+  top: -2px;
+  left:-2px;
+  background-size: 400%;
+  z-index: -1;
+  filter: blur(5px);
+  width: calc(100% + 4px);
+  height: calc(100% + 4px);
+  animation: glowing 20s linear infinite;
+  opacity: 0;
+  transition: opacity .3s ease-in-out;
+  border-radius: 10px;
+}
+
+.girar:active {
+  color: #000
+}
+
+.girar:active:after {
+  background: transparent;
+}
+
+.girar:hover:before {
+  opacity: 1;
+}
+
+.girar:after {
+  z-index: -1;
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: #111;
+  left: 0;
+  top: 0;
+  border-radius: 10px;
+}
+
+@keyframes glowing {
+  0% { background-position: 0 0; }
+  50% { background-position: 400% 0; }
+  100% { background-position: 0 0; }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
