@@ -8,7 +8,7 @@ export const Game = () => {
     const emogi = [<BiSolidTrophy color='gold' />, <BiLogoReact className='reacticone' color='orange' />, <GiAk47U color='grey' />, <GiFullMotorcycleHelmet color='red' />, <GiAnglerFish color='blue' />, <GiHemp color='green' />];
     let contEmogi = emogi.length;
 
-    const [saldo, setSaldo] = useState(20000);
+    const [saldo, setSaldo] = useState(10);
     const [aposta, setAposta] = useState(1);
     const [ganho, setGanho] = useState();
 
@@ -16,11 +16,15 @@ export const Game = () => {
     const diminuir = () => {
         if (aposta > 0) {
             setAposta(aposta - 5);
+        }else if(aposta<=0 && aposta===-4){
+            setAposta(1);
         }
     }
 
     const aumentar = () => {
-        setAposta(aposta + 5);
+        if(saldo>aposta){
+            setAposta(aposta + 5);
+        }
     }
 
     const [n, setN] = useState(5);
@@ -97,7 +101,7 @@ export const Game = () => {
     }
 
     const gerar = () => {
-        if (saldo >= aposta) {
+        if (saldo >= aposta && aposta>0) {
             setSaldo(saldo - aposta);
             setN(() => Math.floor(Math.random() * contEmogi));
             setC(() => Math.floor(Math.random() * contEmogi));
@@ -108,16 +112,15 @@ export const Game = () => {
             setH(() => Math.floor(Math.random() * contEmogi));
             setI(() => Math.floor(Math.random() * contEmogi));
             setJ(() => Math.floor(Math.random() * contEmogi));
-        } else {
+        }else {
             const msg = setTimeout(() => {
                 setErro(true);
-            }, 1000);
-            const clearMsg = () => {
+              }, 1000);
+              return () => {
                 setErro(false);
                 clearTimeout(msg);
+              }
             }
-            return clearMsg;
-        }
 
     }
 
@@ -148,8 +151,8 @@ export const Game = () => {
 
             setExibirLinha2(true);
             setMensagem(true);
-            
-            exibirGanho(e,f,g);
+
+            exibirGanho(e, f, g);
 
             const linha = setTimeout(() => {
                 setExibirLinha2(false);
@@ -169,7 +172,7 @@ export const Game = () => {
             setExibirLinha3(true);
             setMensagem(true);
 
-            exibirGanho(h,i,j);
+            exibirGanho(h, i, j);
 
             const linha = setTimeout(() => {
                 setExibirLinha3(false);
@@ -189,7 +192,7 @@ export const Game = () => {
             setExibirLinha4(true);
             setMensagem(true);
 
-           exibirGanho(n,e,h);
+            exibirGanho(n, e, h);
 
             const linha = setTimeout(() => {
                 setExibirLinha4(false);
@@ -209,7 +212,7 @@ export const Game = () => {
             setExibirLinha5(true);
             setMensagem(true);
 
-            exibirGanho(c,f,i);
+            exibirGanho(c, f, i);
 
             const linha = setTimeout(() => {
                 setExibirLinha5(false);
@@ -229,7 +232,7 @@ export const Game = () => {
             setExibirLinha6(true);
             setMensagem(true);
 
-            exibirGanho(d,g,j);
+            exibirGanho(d, g, j);
 
             const linha = setTimeout(() => {
                 setExibirLinha6(false);

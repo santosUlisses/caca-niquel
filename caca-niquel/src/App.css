@@ -35,8 +35,8 @@
   position: absolute;
   left: -2px;
   top: -2px;
-  background: linear-gradient(45deg, #000000, #ffffff, #00ff6a,#002d09, #0e0047, #290029, 
-    #2c2c00, #fffb00,#000000, #51bc00);
+  background: linear-gradient(45deg, #979797, #979797, #979797, #e27800, #e27800, #e27800, #3cff00, #3cff00, #3cff00, #f2ff00, #f2ff00
+  , #f2ff00, #1500ff, #1500ff, #1500ff, #000000, #000000, #000000, #cc0000, #cc0000,#cc0000);
   background-size: 400%;
   width: calc(100% + 4px);
   height: calc(100% + 4px);
