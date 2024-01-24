@@ -16,8 +16,6 @@ export const Game = () => {
     const diminuir = () => {
         if (aposta > 0) {
             setAposta(aposta - 5);
-        }else if(aposta<=0 && aposta===-4){
-            setAposta(1);
         }
     }
 
@@ -33,9 +31,9 @@ export const Game = () => {
     const [e, setE] = useState(2);
     const [f, setF] = useState(2);
     const [g, setG] = useState(2);
-    const [h, setH] = useState(3);
-    const [i, setI] = useState(3);
-    const [j, setJ] = useState(3);
+    const [h, setH] = useState(0);
+    const [i, setI] = useState(0);
+    const [j, setJ] = useState(0);
 
     const [exibirLinha, setExibirLinha] = useState(false);
     const [exibirLinha2, setExibirLinha2] = useState(false);
@@ -53,7 +51,7 @@ export const Game = () => {
             setSaldo((prevSaldo) => {
                 const novoGanho = aposta * 5000;
                 prevSaldo + aposta * 5000;
-                setGanho(ganho + novoGanho);
+                setGanho(novoGanho);
                 return saldo + novoGanho
             });
         }
