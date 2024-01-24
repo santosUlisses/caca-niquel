@@ -44,14 +44,14 @@ export const Game = () => {
     const [mensagem, setMensagem] = useState(false);
     const [erro, setErro] = useState(false);
 
-    const ganhos=[5000, 1000, 500, 250, 100, 50];
-    const validarGanhos=(a,b,c)=>{
-        if(a===b && b===c){
-           let newGanho= ganhos[a] * aposta;
-           setSaldo(saldo+newGanho);
-           setGanho(newGanho);
+    const ganhos = [5000, 1000, 500, 250, 100, 50];
+    const validarGanhos = (a, b, c) => {
+        if (a === b && b === c) {
+            let newGanho = ganhos[a] * aposta;
+            setSaldo(saldo + newGanho);
+            setGanho(newGanho);
         }
-        return saldo,ganho
+        return saldo, ganho
     }
 
     const gerar = () => {
@@ -79,125 +79,48 @@ export const Game = () => {
 
     }
 
-
-    useEffect(() => {
-        if (n === c && c === d) {
-
+    const validarLinhas = (a, b, c, setExibirLinha, setMensagem, validarGanhos) => {
+        if (a === b && b === c) {
             setExibirLinha(true);
             setMensagem(true);
-            validarGanhos(n,c,d);
-
-
+            validarGanhos(a, b, c);
             const linha = setTimeout(() => {
                 setExibirLinha(false);
                 setMensagem(false);
             }, 1000);
-
-
             return () => {
                 clearTimeout(linha);
             };
         }
+    }
+
+
+    useEffect(() => {
+        return validarLinhas(n, c, d, setExibirLinha, setMensagem, validarGanhos);
     }, [n, c, d, e, f, g, h, i, j]);
 
 
     useEffect(() => {
-        if (e === f && f === g) {
-
-            setExibirLinha2(true);
-            setMensagem(true);
-
-            validarGanhos(e,f,g);
-
-            const linha = setTimeout(() => {
-                setExibirLinha2(false);
-                setMensagem(false);
-            }, 1000);
-
-            return () => {
-                clearTimeout(linha);
-            };
-
-        }
+        return validarLinhas(e, f, g, setExibirLinha2, setMensagem, validarGanhos);
     }, [n, c, d, e, f, g, h, i, j]);
 
     useEffect(() => {
-        if (h === i && i === j) {
-
-            setExibirLinha3(true);
-            setMensagem(true);
-
-            validarGanhos(h,i,j);
-
-            const linha = setTimeout(() => {
-                setExibirLinha3(false);
-                setMensagem(false);
-            }, 1000);
-
-            return () => {
-                clearTimeout(linha);
-            };
-        }
+        return validarLinhas(h, i, j, setExibirLinha3, setMensagem, validarGanhos);
     }, [n, c, d, e, f, g, h, i, j]);
 
 
     useEffect(() => {
-        if (n === e && e === h) {
-
-            setExibirLinha4(true);
-            setMensagem(true);
-
-            validarGanhos(n,e,h);
-
-            const linha = setTimeout(() => {
-                setExibirLinha4(false);
-                setMensagem(false);
-            }, 1000);
-
-            return () => {
-                clearTimeout(linha);
-            };
-        }
+        return validarLinhas(n, e, h, setExibirLinha4, setMensagem, validarGanhos);
     }, [n, c, d, e, f, g, h, i, j]);
 
 
     useEffect(() => {
-        if (c === f && f === i) {
-
-            setExibirLinha5(true);
-            setMensagem(true);
-
-            validarGanhos(c,f,i);
-
-            const linha = setTimeout(() => {
-                setExibirLinha5(false);
-                setMensagem(false);
-            }, 1000);
-
-            return () => {
-                clearTimeout(linha);
-            };
-        }
+        return validarLinhas(c, f, i, setExibirLinha5, setMensagem, validarGanhos);
     }, [n, c, d, e, f, g, h, i, j]);
 
 
     useEffect(() => {
-        if (d === g && g === j) {
-
-            setExibirLinha6(true);
-            setMensagem(true);
-
-            validarGanhos(d,g,j);
-
-            const linha = setTimeout(() => {
-                setExibirLinha6(false);
-                setMensagem(false);
-            }, 1000);
-
-            return () => {
-                clearTimeout(linha);
-            };
-        }
+        return validarLinhas(d, g, j, setExibirLinha6, setMensagem, validarGanhos);
     }, [n, c, d, e, f, g, h, i, j]);
 
 
