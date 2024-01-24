@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { BiLogoReact, BiSolidMedal, BiSolidTrophy } from 'react-icons/bi';
+import { BiLogoReact, BiSolidTrophy } from 'react-icons/bi';
 import { GiAk47U, GiAnglerFish, GiFullMotorcycleHelmet, GiHemp } from "react-icons/gi";
 import { IoMdRemove, IoIosAdd } from "react-icons/io";
 
@@ -9,7 +9,7 @@ export const Game = () => {
     let contEmogi = emogi.length;
 
     const [saldo, setSaldo] = useState(0);
-    const [aposta, setAposta] = useState(100);
+    const [aposta, setAposta] = useState(1);
     const [ganho, setGanho] = useState();
 
 
