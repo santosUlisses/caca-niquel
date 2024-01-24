@@ -8,8 +8,8 @@ export const Game = () => {
     const emogi = [<BiSolidTrophy color='gold' />, <BiLogoReact className='reacticone' color='orange' />, <GiAk47U color='grey' />, <GiFullMotorcycleHelmet color='red' />, <GiAnglerFish color='blue' />, <GiHemp color='green' />];
     let contEmogi = emogi.length;
 
-    const [saldo, setSaldo] = useState(10);
-    const [aposta, setAposta] = useState(1);
+    const [saldo, setSaldo] = useState(0);
+    const [aposta, setAposta] = useState(100);
     const [ganho, setGanho] = useState();
 
 
@@ -20,7 +20,7 @@ export const Game = () => {
     }
 
     const aumentar = () => {
-        if(saldo>aposta){
+        if (saldo > aposta) {
             setAposta(aposta + 5);
         }
     }
@@ -31,9 +31,9 @@ export const Game = () => {
     const [e, setE] = useState(2);
     const [f, setF] = useState(2);
     const [g, setG] = useState(2);
-    const [h, setH] = useState(0);
-    const [i, setI] = useState(0);
-    const [j, setJ] = useState(0);
+    const [h, setH] = useState(3);
+    const [i, setI] = useState(3);
+    const [j, setJ] = useState(3);
 
     const [exibirLinha, setExibirLinha] = useState(false);
     const [exibirLinha2, setExibirLinha2] = useState(false);
@@ -44,62 +44,18 @@ export const Game = () => {
     const [mensagem, setMensagem] = useState(false);
     const [erro, setErro] = useState(false);
 
-
-    const exibirGanho = (a, b, c) => {
-
-        if (a === 0 && b === 0 && c === 0) {
-            setSaldo((prevSaldo) => {
-                const novoGanho = aposta * 5000;
-                prevSaldo + aposta * 5000;
-                setGanho(novoGanho);
-                return saldo + novoGanho
-            });
+    const ganhos=[5000, 1000, 500, 250, 100, 50];
+    const validarGanhos=(a,b,c)=>{
+        if(a===b && b===c){
+           let newGanho= ganhos[a] * aposta;
+           setSaldo(saldo+newGanho);
+           setGanho(newGanho);
         }
-        else if (a === 1 && b === 1 && c === 1) {
-            setSaldo((prevSaldo) => {
-                const novoGanho = aposta * 1000;
-                prevSaldo + aposta * 1000;
-                setGanho(novoGanho);
-                return saldo + novoGanho
-            });
-        }
-        else if (a === 2 && b === 2 && c === 2) {
-            setSaldo((prevSaldo) => {
-                const novoGanho = aposta * 500;
-                prevSaldo + aposta * 500;
-                setGanho(novoGanho);
-                return saldo + novoGanho
-            });
-        }
-        else if (a === 3 && b === 3 && c === 3) {
-            setSaldo((prevSaldo) => {
-                const novoGanho = aposta * 250;
-                prevSaldo + aposta * 250;
-                setGanho(novoGanho);
-                return saldo + novoGanho
-            });
-        }
-        else if (a === 4 && b === 4 && c === 4) {
-            setSaldo((prevSaldo) => {
-                const novoGanho = aposta * 100;
-                prevSaldo + aposta * 100;
-                setGanho(novoGanho);
-                return saldo + novoGanho
-            });
-        }
-        else if (a === 5 && b === 5 && c === 5) {
-            setSaldo((prevSaldo) => {
-                const novoGanho = aposta * 50;
-                prevSaldo + aposta * 50;
-                setGanho(novoGanho);
-                return saldo + novoGanho
-            });
-        }
-
+        return saldo,ganho
     }
 
     const gerar = () => {
-        if (saldo >= aposta && aposta>0) {
+        if (saldo >= aposta && aposta > 0) {
             setSaldo(saldo - aposta);
             setN(() => Math.floor(Math.random() * contEmogi));
             setC(() => Math.floor(Math.random() * contEmogi));
@@ -110,15 +66,16 @@ export const Game = () => {
             setH(() => Math.floor(Math.random() * contEmogi));
             setI(() => Math.floor(Math.random() * contEmogi));
             setJ(() => Math.floor(Math.random() * contEmogi));
-        }else {
+        } else {
             const msg = setTimeout(() => {
                 setErro(true);
-              }, 1000);
-              return () => {
+            }, 1000);
+            return () => {
                 setErro(false);
                 clearTimeout(msg);
-              }
             }
+
+        }
 
     }
 
@@ -128,8 +85,8 @@ export const Game = () => {
 
             setExibirLinha(true);
             setMensagem(true);
+            validarGanhos(n,c,d);
 
-            exibirGanho(n, c, d);
 
             const linha = setTimeout(() => {
                 setExibirLinha(false);
@@ -150,7 +107,7 @@ export const Game = () => {
             setExibirLinha2(true);
             setMensagem(true);
 
-            exibirGanho(e, f, g);
+            validarGanhos(e,f,g);
 
             const linha = setTimeout(() => {
                 setExibirLinha2(false);
@@ -170,7 +127,7 @@ export const Game = () => {
             setExibirLinha3(true);
             setMensagem(true);
 
-            exibirGanho(h, i, j);
+            validarGanhos(h,i,j);
 
             const linha = setTimeout(() => {
                 setExibirLinha3(false);
@@ -190,7 +147,7 @@ export const Game = () => {
             setExibirLinha4(true);
             setMensagem(true);
 
-            exibirGanho(n, e, h);
+            validarGanhos(n,e,h);
 
             const linha = setTimeout(() => {
                 setExibirLinha4(false);
@@ -210,7 +167,7 @@ export const Game = () => {
             setExibirLinha5(true);
             setMensagem(true);
 
-            exibirGanho(c, f, i);
+            validarGanhos(c,f,i);
 
             const linha = setTimeout(() => {
                 setExibirLinha5(false);
@@ -230,7 +187,7 @@ export const Game = () => {
             setExibirLinha6(true);
             setMensagem(true);
 
-            exibirGanho(d, g, j);
+            validarGanhos(d,g,j);
 
             const linha = setTimeout(() => {
                 setExibirLinha6(false);
