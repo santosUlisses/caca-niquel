@@ -12,26 +12,11 @@
   animation: roletar 3s linear infinite;
 }
 .icones1{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   font-size: 60px;
 }
-
-
-/* 
-.game {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 300px;
-  height: 250px;
-  background-color: rgb(34, 34, 34);
-  font-size: 60px;
-  margin-top: -110px;
-  border-radius:50px;
-  border: none;
-  position: relative;
-  margin: 300px auto 0;
-  background: linear-gradient(0deg, #000, #272727);
-} */
 
 
 
@@ -50,8 +35,8 @@
   position: absolute;
   left: -2px;
   top: -2px;
-  background: linear-gradient(45deg, #fb0094, #0000ff, #00ff00,#ffff00, #ff0000, #fb0094, 
-    #0000ff, #00ff00,#ffff00, #ff0000);
+  background: linear-gradient(45deg, #000000, #ffffff, #00ff6a,#002d09, #0e0047, #290029, 
+    #2c2c00, #fffb00,#000000, #51bc00);
   background-size: 400%;
   width: calc(100% + 4px);
   height: calc(100% + 4px);
