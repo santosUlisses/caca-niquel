@@ -13,18 +13,6 @@ export const Game = () => {
     const [ganho, setGanho] = useState();
 
 
-    const diminuir = () => {
-        if (aposta > 0) {
-            setAposta(aposta - 5);
-        }
-    }
-
-    const aumentar = () => {
-        if (saldo > aposta) {
-            setAposta(aposta + 5);
-        }
-    }
-
     const [n, setN] = useState(5);
     const [c, setC] = useState(5);
     const [d, setD] = useState(5);
@@ -43,6 +31,20 @@ export const Game = () => {
     const [exibirLinha6, setExibirLinha6] = useState(false);
     const [mensagem, setMensagem] = useState(false);
     const [erro, setErro] = useState(false);
+
+
+    const diminuir = () => {
+        if (aposta > 0) {
+            setAposta(aposta - 5);
+        }
+    }
+
+    const aumentar = () => {
+        if (saldo > aposta) {
+            setAposta(aposta + 5);
+        }
+    }
+
 
     const ganhos = [5000, 1000, 500, 250, 100, 50];
     const validarGanhos = (a, b, c) => {
@@ -98,7 +100,6 @@ export const Game = () => {
     useEffect(() => {
         return validarLinhas(n, c, d, setExibirLinha, setMensagem, validarGanhos);
     }, [n, c, d, e, f, g, h, i, j]);
-
 
     useEffect(() => {
         return validarLinhas(e, f, g, setExibirLinha2, setMensagem, validarGanhos);
