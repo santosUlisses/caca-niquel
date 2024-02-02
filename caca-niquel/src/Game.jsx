@@ -55,8 +55,6 @@ export const Game = () => {
             totalGanhos.push(newGanho);
             setSaldo(saldo + newGanho + soma);
             setGanho(newGanho + soma);
-            console.log(totalGanhos)
-            console.log(saldo)
         }
         return saldo
     }
