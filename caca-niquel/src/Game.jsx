@@ -11,6 +11,7 @@ export const Game = () => {
     const [saldo, setSaldo] = useState(0);
     const [aposta, setAposta] = useState(1);
     const [ganho, setGanho] = useState();
+    const totalGanhos=[];
 
 
     const [n, setN] = useState(5);
@@ -50,10 +51,12 @@ export const Game = () => {
     const validarGanhos = (a, b, c) => {
         if (a === b && b === c) {
             let newGanho = ganhos[a] * aposta;
-            setSaldo(saldo + newGanho);
-            setGanho(newGanho);
+            const soma=totalGanhos.reduce((acumulador,elemento)=>acumulador+elemento,0);
+            setSaldo(saldo + newGanho + soma);
+            setGanho(newGanho + soma);
+            totalGanhos.push(newGanho);
         }
-        return saldo, ganho
+        return saldo
     }
 
     const gerar = () => {
@@ -68,6 +71,13 @@ export const Game = () => {
             setH(() => Math.floor(Math.random() * contEmogi));
             setI(() => Math.floor(Math.random() * contEmogi));
             setJ(() => Math.floor(Math.random() * contEmogi));
+            setExibirLinha(false);
+            setExibirLinha2(false);
+            setExibirLinha3(false);
+            setExibirLinha4(false);
+            setExibirLinha5(false);
+            setExibirLinha6(false);
+            setMensagem(false);
         } else {
             const msg = setTimeout(() => {
                 setErro(true);
