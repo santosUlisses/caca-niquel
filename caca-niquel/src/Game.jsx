@@ -11,7 +11,7 @@ export const Game = () => {
     const [saldo, setSaldo] = useState(0);
     const [aposta, setAposta] = useState(1);
     const [ganho, setGanho] = useState();
-    const totalGanhos=[];
+    const totalGanhos = [];
 
 
     const [n, setN] = useState(5);
@@ -36,13 +36,13 @@ export const Game = () => {
 
     const diminuir = () => {
         if (aposta > 0) {
-            setAposta(aposta - 5);
+            setAposta(aposta - 1);
         }
     }
 
     const aumentar = () => {
         if (saldo > aposta) {
-            setAposta(aposta + 5);
+            setAposta(aposta + 1);
         }
     }
 
@@ -51,10 +51,12 @@ export const Game = () => {
     const validarGanhos = (a, b, c) => {
         if (a === b && b === c) {
             let newGanho = ganhos[a] * aposta;
-            const soma=totalGanhos.reduce((acumulador,elemento)=>acumulador+elemento,0);
+            const soma = totalGanhos.reduce((acumulador, elemento) => acumulador + elemento, 0);
+            totalGanhos.push(newGanho);
             setSaldo(saldo + newGanho + soma);
             setGanho(newGanho + soma);
-            totalGanhos.push(newGanho);
+            console.log(totalGanhos)
+            console.log(saldo)
         }
         return saldo
     }
@@ -78,6 +80,7 @@ export const Game = () => {
             setExibirLinha5(false);
             setExibirLinha6(false);
             setMensagem(false);
+            setErro(false)
         } else {
             const msg = setTimeout(() => {
                 setErro(true);
@@ -170,7 +173,7 @@ export const Game = () => {
             <div className="saldo">Saldo  R$ {saldo}</div>
 
 
-            <div className="aposta">Valor da aposta <button onClick={diminuir}><IoMdRemove /></button> {aposta}  <button onClick={aumentar}><IoIosAdd /></button></div>
+            <div className="aposta">Valor da aposta <button onClick={diminuir}><IoMdRemove /></button> {aposta} <button onClick={aumentar}><IoIosAdd /></button></div>
 
             {exibirLinha && <div className="linha"></div>}
             {exibirLinha2 && <div className="linha2"></div>}

@@ -212,6 +212,10 @@ body {
   margin-left: 230px;
   margin-top: -43px;
 }
+.aposta input{
+    width: 20px;
+    max-width: 900px;
+}
 
 .error {
   color: red;
